@@ -1,10 +1,9 @@
-
-import Wrapper from "./components/Wrapper.js";
-// @babel/plugin-proposal-private-property-in-object
+import Wrapper from "./components/Wrapper.jsx";
+import "./App.css";
 import Screen from "./components/Screen";
 import ButtonBox from "./components/ButtonBox";
 import Button from "./components/Button";
-import "./components/Button.css";
+import { wrapper } from "./components/WrapperStyles.js";
 
 const btnValues = [
   ["C", "+-", "%", "/"],
@@ -15,12 +14,30 @@ const btnValues = [
 ];
 
 const App = () => {
+  const handleButtonClick = (value) => {
+    // Handle button click logic here
+    console.log("Button clicked:", value);
+  };
+
   return (
-    <Wrapper>
+ 
+    <Wrapper className={wrapper}>
       <Screen value="0" />
-      <Screen/>
+      <Screen />
       <ButtonBox>
-        
+        {btnValues.map((row, rowIndex) => (
+          <div key={rowIndex} className="button-row">
+            {row.map((value, colIndex) => (
+              <div key={colIndex} className="button">
+                <Button
+                  key={colIndex}
+                  value={value}
+                  onClick={() => handleButtonClick(value)}
+                />
+              </div>
+            ))}
+          </div>
+        ))}
       </ButtonBox>
     </Wrapper>
   );

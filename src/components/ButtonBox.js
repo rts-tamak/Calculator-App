@@ -1,7 +1,8 @@
 import "./ButtonBox.css";
 
-const ButtonBox = ({Button}) => {
-    return <div className="ButtonBox">{Button}</div>
+const ButtonBox = ({children}) => {
+    // console.log("hello box", { children });
+    return <div className="ButtonBoxx">{children}</div>;
 }
 
 export default ButtonBox;
